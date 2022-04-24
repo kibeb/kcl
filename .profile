@@ -38,6 +38,8 @@ alias cnt="find . -type f | wc -l ";
 alias title='settitle(){ echo -ne "\\033]0;"$@"\\007"; unset -f settitle; }; settitle'
 if [ -e /run/systemd/system ]; then
   alias sc="systemctl ";
+  _completion_loader systemctl
+  complete -F _systemctl sc
 else
   alias sc='sc(){ /etc/init.d/$2 $1; unset -f sc; }; sc';
 fi
