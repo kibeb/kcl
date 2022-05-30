@@ -4,6 +4,10 @@ if [ "$BASH" ]; then
   if [ -f ~/.bashrc ]; then
     . ~/.bashrc
   fi
+  if command -v mesg &> /dev/null
+  then
+    mesg n 2> /dev/null || true
+  fi
 fi
 
 if [ -f /etc/openwrt_version ]; then
@@ -15,7 +19,7 @@ else
 fi
 
 force_color_prompt=yes
-export LESS=-I
+export LESS=-IR
 
 lf () { grep -i $1 /var/log/syslog | tail -n $(echo $2 50 | awk '{print $1}'   ); }
 cf () { cat /proc/net/nf_conntrack | grep -i $1; }
