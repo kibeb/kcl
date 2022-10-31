@@ -1,9 +1,6 @@
-# Ctrl+Lelf, Ctrl+Right
+# Ctrl+Left, Ctrl+Right
 "\eOD": backward-word
 "\eOC": forward-word
-# Ctrl+Lelf, Ctrl+Right in screen session
-"\e[D": backward-word
-"\e[C": forward-word
 # Home, End
 "\e[1~": beginning-of-line
 "\e[4~": end-of-line
