@@ -1,0 +1,16 @@
+# Ctrl+Lelf, Ctrl+Right
+"\eOD": backward-word
+"\eOC": forward-word
+# Ctrl+Lelf, Ctrl+Right in screen session
+"\e[D": backward-word
+"\e[C": forward-word
+# Home, End
+"\e[1~": beginning-of-line
+"\e[4~": end-of-line
+# Ctrl+Delete: delete next word
+"\e[3;5~": shell-kill-word
+#"\e[3;5~": kill-word
+# Ctrl+Backspace
+#"\C-H": shell-backward-kill-word
+"\C-?": backward-kill-word
+# .. Putty must be set: Terminal / Keyboard / The Backspace key = Control-H
