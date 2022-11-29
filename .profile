@@ -14,8 +14,13 @@ if [ -f /etc/openwrt_version ]; then
   # OpenWrt:
   export PS1='\[\033[35;1m\]'$PS1'\[\033[0m\]';
 else
-  # Debian:
-  export PS1='${debian_chroot:+($debian_chroot)}\[\033[01;31m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+  # Debian: screen session or not:
+  if [[ ${STY#*.} ]]; then
+    export PS1='${debian_chroot:+($debian_chroot)}\[\033[01;31m\]\u@\h\[\033[00m\](${STY#*.}):\[\033[01;34m\]\w\[\033[00m\]\$ '
+    export HISTFILE=~/.bash_history.${STY#*.}
+  else
+    export PS1='${debian_chroot:+($debian_chroot)}\[\033[01;31m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+  fi
 fi
 
 force_color_prompt=yes
