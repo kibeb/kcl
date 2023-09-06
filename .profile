@@ -40,7 +40,15 @@ else
   p () { ps -aux | grep -i [${1:0:1}]${1:1}; }
 fi
 
+scr () {
+  if [ "$#" == "0" ]; then screen -ls; return ; fi
+  screen -ls | grep -P "\.$1\t.*(Detached)" && screen -r "$1" && return
+  screen -ls | grep -P "\.$1\t" && echo "screen $1 is already attached somewhere, aborting." && return
+  screen -S "$1" && return
+}
+
 alias la="ls -lap --group-directories-first --color=yes ";
+alias lad="ls -lap --group-directories-first --color=yes | sed '/^d/!d' ";
 alias ll="ls -lp --group-directories-first --color=yes ";
 alias ping="ping -c 4 ";
 alias cnt="find . -type f | wc -l ";
