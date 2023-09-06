@@ -26,13 +26,13 @@ fi
 force_color_prompt=yes
 export LESS=-IR
 
-lf () { grep -i $1 /var/log/syslog | tail -n $(echo $2 50 | awk '{print $1}'   ); }
-cf () { cat /proc/net/nf_conntrack | grep -i $1; }
-#lf () { logread | sed "/cound not find a ser/d" | grep -i $1 | tail -n 50
-
-#tur: tbc:
-l () { grep -i $1 /var/log/messages | tail -n $(echo $2 50 | awk '{print $1}' ); }
-lf () { sed "/cound not find a ser/d" /var/log/messages | grep -i "$1" | tail -n $(echo $2 50 | awk '{print    $1}' ); }
+lf () { grep -i $1 /var/log/syslog | tail -n ${2:-50} ; }
+lfl () { lf $1 ${2:-200} | less +G ; }
+mf () { grep -i $1 /var/log/messages | tail -n ${2:-50} ; }
+mfl () { mf $1 ${2:-200} | less +G ; }
+cf () { cat /proc/net/nf_conntrack | grep -i $1 ; }
+#tur:
+#mf () { sed "/cound not find a ser/d" /var/log/messages | grep -i "$1" | tail -n ${2:-50} ; }
 
 if [ $(readlink $(which ps) | grep busybox) ]; then
   p () { ps      | grep -i [${1:0:1}]${1:1}; }
