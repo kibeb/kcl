@@ -31,6 +31,8 @@ lfl () { lf $1 ${2:-200} | less +G ; }
 mf () { grep -i $1 /var/log/messages | tail -n ${2:-50} ; }
 mfl () { mf $1 ${2:-200} | less +G ; }
 cf () { cat /proc/net/nf_conntrack | grep -i $1 ; }
+transfer () { curl --upload-file $1 https://transfer.sh/$1 ; }
+alfu () { alias $1 2>/dev/null || declare -f $1 ; }
 #tur:
 #mf () { sed "/cound not find a ser/d" /var/log/messages | grep -i "$1" | tail -n ${2:-50} ; }
 
@@ -60,3 +62,4 @@ if [ -e /run/systemd/system ]; then
 else
   alias sc='sc(){ /etc/init.d/$2 $1; unset -f sc; }; sc';
 fi
+alias apt.kinstall='apt install man-db vim netcat-openbsd net-tools bind9-dnsutils wget curl git screen btop';
