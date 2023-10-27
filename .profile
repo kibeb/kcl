@@ -63,3 +63,4 @@ else
   alias sc='sc(){ /etc/init.d/$2 $1; unset -f sc; }; sc';
 fi
 alias apt.kinstall='apt install man-db vim netcat-openbsd net-tools bind9-dnsutils wget curl git screen btop';
+alias urldecode='(IFS="+"; read _z; echo -e ${_z//%/\\x}"") <<< ';
