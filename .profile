@@ -65,3 +65,9 @@ else
 fi
 alias apt.kinstall='apt install man-db vim netcat-openbsd net-tools bind9-dnsutils wget curl git screen btop';
 alias urldecode='(IFS="+"; read _z; echo -e ${_z//%/\\x}"") <<< ';
+alias lsblk.my='lsblk -o name,rm,size,ro,type,mountpoints,label,uuid';
+
+if [ -f ~/.profile.lcl ]; then
+  . ~/.profile.lcl
+fi
+
