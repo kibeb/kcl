@@ -31,7 +31,7 @@ lfl () { lf $1 ${2:-200} | less +G ; }
 mf () { grep -i $1 /var/log/messages | tail -n ${2:-50} ; }
 mfl () { mf $1 ${2:-200} | less +G ; }
 cf () { cat /proc/net/nf_conntrack | grep -i $1 ; }
-transfer () { curl --upload-file $1 https://transfer.sh/$1 ; }
+transfer () { curl -F "file=@$1" https://temp.sh/upload ; echo ; }
 alfu () { if [ $# -eq 0 ]; then alias && declare -f | sed "/^[^a-zA-Z]/d;/^gaw/d"; else alias $1 2>/dev/null || declare -f $1 ;fi; }
 mv.urldec () { if [ $# -ne 2 ]; then return; fi; mv "$1" "$(urldecode $2)" ; }
 #tur:
