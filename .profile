@@ -33,6 +33,7 @@ mfl () { mf $1 ${2:-200} | less +G ; }
 cf () { cat /proc/net/nf_conntrack | grep -i $1 ; }
 transfer () { curl -F "file=@$1" https://temp.sh/upload ; echo ; }
 alfu () { if [ $# -eq 0 ]; then alias && declare -f | sed "/^[^a-zA-Z]/d;/^gaw/d"; else alias $1 2>/dev/null || declare -f $1 ;fi; }
+urldecode () { echo $1 | (IFS="+"; read _z; echo -e ${_z//%/\\x}""); }
 mv.urldec () { if [ $# -ne 2 ]; then return; fi; mv "$1" "$(urldecode $2)" ; }
 #tur:
 #mf () { sed "/cound not find a ser/d" /var/log/messages | grep -i "$1" | tail -n ${2:-50} ; }
@@ -64,7 +65,6 @@ else
   alias sc='sc(){ /etc/init.d/$2 $1; unset -f sc; }; sc';
 fi
 alias apt.kinstall='apt install man-db vim netcat-openbsd net-tools bind9-dnsutils wget curl git screen btop';
-alias urldecode='(IFS="+"; read _z; echo -e ${_z//%/\\x}"") <<< ';
 alias lsblk.my='lsblk -o name,rm,size,ro,type,mountpoints,label,uuid';
 
 if [ -f ~/.profile.lcl ]; then
