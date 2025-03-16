@@ -65,6 +65,7 @@ else
   alias sc='sc(){ /etc/init.d/$2 $1; unset -f sc; }; sc';
 fi
 alias apt.kinstall='apt install man-db vim netcat-openbsd net-tools bind9-dnsutils wget curl git screen btop';
+alias apk.kinstall='apk add mandoc man-pages vim curl git screen';
 alias lsblk.my='lsblk -o name,rm,size,ro,type,mountpoints,label,uuid';
 
 if [ -f ~/.profile.lcl ]; then
