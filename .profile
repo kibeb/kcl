@@ -33,6 +33,7 @@ mfl () { mf $1 ${2:-200} | less +G ; }
 cf () { cat /proc/net/nf_conntrack | grep -i $1 ; }
 transfer () { curl -F "file=@$1" https://temp.sh/upload ; echo ; }
 alfu () { if [ $# -eq 0 ]; then alias && declare -f | sed "/^[^a-zA-Z]/d;/^gaw/d"; else alias $1 2>/dev/null || declare -f $1 ;fi; }
+unalias urldecode 2> /dev/null
 urldecode () { echo $1 | (IFS="+"; read _z; echo -e ${_z//%/\\x}""); }
 mv.urldec () { if [ $# -ne 2 ]; then return; fi; mv "$1" "$(urldecode $2)" ; }
 #tur:
@@ -46,8 +47,8 @@ fi
 
 scr () {
   if [ "$#" == "0" ]; then screen -ls; return ; fi
-  screen -ls | grep -P "\.$1\t.*(Detached)" && screen -r "$1" && return
-  screen -ls | grep -P "\.$1\t" && echo "screen $1 is already attached somewhere, aborting." && return
+  screen -ls | grep "\.$1\s.*(Detached)" && screen -r "$1" && return
+  screen -ls | grep "\.$1\s" && echo "screen $1 is already attached somewhere, aborting." && return
   screen -S "$1" && return
 }
 
