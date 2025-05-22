@@ -52,6 +52,13 @@ scr () {
   screen -S "$1" && return
 }
 
+tm () {
+  if [ "$#" == "0" ]; then tmux ls; return ; fi
+  tmux ls | grep -P "^$1:.*(attached)" && echo "tmux $1 is already attached somewhere, aborting." && return
+  tmux ls | grep -P "^$1:" && tmux attach -t "$1" && return
+  tmux new -s "$1" && return
+}
+
 alias la="ls -lap --group-directories-first --color=yes ";
 alias lad="ls -lap --group-directories-first --color=yes | sed '/^d/!d' ";
 alias ll="ls -lp --group-directories-first --color=yes ";
