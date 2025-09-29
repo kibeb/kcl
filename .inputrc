@@ -1,3 +1,8 @@
+# Enable typing of accented characters via terminal
+set input-meta on
+set output-meta on
+set convert-meta off
+set enable-meta-key on
 # Ctrl+Left, Ctrl+Right
 "\eOD": backward-word
 "\eOC": forward-word
