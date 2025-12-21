@@ -35,7 +35,7 @@ transfer () { curl -sF "file=@$1" https://temp.sh/upload | xargs -I {} printf "{
 alfu () { if [ $# -eq 0 ]; then alias && declare -f | sed "/^[^a-zA-Z]/d;/^gaw/d"; else alias $1 2>/dev/null || declare -f $1 ;fi; }
 unalias urldecode 2> /dev/null
 urldecode () { echo $1 | (IFS="+"; read _z; echo -e ${_z//%/\\x}""); }
-mv.urldec () { if [ $# -ne 2 ]; then return; fi; mv "$1" "$(urldecode $2)" ; }
+mv.urldec () { if [ $# -eq 1 ] || [ $# -eq 2 ]; then mv "$1" "$(urldecode ${2:-$1})"; fi; }
 #tur:
 #mf () { sed "/cound not find a ser/d" /var/log/messages | grep -i "$1" | tail -n ${2:-50} ; }
 
