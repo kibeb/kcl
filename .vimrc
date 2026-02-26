@@ -12,3 +12,5 @@ set smartindent    " Use smart indenting
 "set tabstop=4      " Number of spaces a <Tab> in the file counts for
 "set shiftwidth=4   " Number of spaces to use for each step of indent
 "set softtabstop=4  " Number of spaces a <Tab> counts for while performing editing
+" Prevent Ins key toggling to the Replace mode (which can still be activated by R key):
+imap <Insert> <Nop>
