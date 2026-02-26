@@ -6,3 +6,9 @@ set encoding=utf-8
 " BusyBox vim may not contain syntax files, so comment out:
 syntax on
 colorscheme murphy
+" smartindent et al.:
+set expandtab      " Convert tabs to spaces
+set smartindent    " Use smart indenting
+"set tabstop=4      " Number of spaces a <Tab> in the file counts for
+"set shiftwidth=4   " Number of spaces to use for each step of indent
+"set softtabstop=4  " Number of spaces a <Tab> counts for while performing editing
