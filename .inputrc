@@ -3,6 +3,9 @@ set input-meta on
 set output-meta on
 set convert-meta off
 set enable-meta-key on
+# Following codes can be viewed in bash CLI, e.g.: Ctrl+Q Ctrl+V Ctrl+Left -- outputs: ^[OD
+#   n.b. leading \e is the same as ^[
+#   BTW for same functionality from CLI use e.g.: bind '"\eOD": backward-word'
 # Ctrl+Left, Ctrl+Right
 "\eOD": backward-word
 "\eOC": forward-word
