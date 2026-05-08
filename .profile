@@ -48,6 +48,11 @@ if [ "$SHELL" != "/bin/ash" ]; then
   renfn diff_conf diff.conf
 fi
 
+syntax () {
+  if [ $# -eq 0 ]; then echo "$FUNCNAME [ufw|ufw]"; fi
+  if [ "$1" = "ufw" ]; then echo 'ufw allow in on wg0 to any port 161 proto udp from 172.16.0.0/16 comment "test demo snmp rule"'; fi
+}
+
 #tur:
 #mf () { sed "/cound not find a ser/d" /var/log/messages | grep -i "$1" | tail -n ${2:-50} ; }
 
