@@ -42,8 +42,10 @@ renfn () {
   unset $1
 }
 mv_urldec () { if [ $# -eq 1 ] || [ $# -eq 2 ]; then mv "$1" "$(urldecode ${2:-$1})"; fi; }
+diff_conf () { diff <(sed '/^#/d' $1) <(sed '/^#/d' $2) ; }
 if [ "$SHELL" != "/bin/ash" ]; then
   renfn mv_urldec mv.urldec
+  renfn diff_conf diff.conf
 fi
 
 #tur:
