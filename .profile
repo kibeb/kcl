@@ -92,6 +92,8 @@ fi
 alias apt.kinstall='apt install man-db vim netcat-openbsd net-tools bind9-dnsutils wget curl git screen btop';
 alias apk.kinstall='apk add mandoc man-pages vim curl git screen';
 alias lsblk.my='lsblk --help | grep "MOUNTPOINTS" && lsblk -o name,rm,size,ro,type,fstype,mountpoints,label,uuid || lsblk -o name,rm,size,ro,type,fstype,mountpoint,label,uuid';
+alias need.reboot='apt list --installed linux-image-* ; uname -a ; ls -la /var/run/reboot-required 2>/dev/null';
+alias need.reboot.alpine='ls -la /boot/vmlinuz* ; uname -r';
 
 if [ -f ~/.profile.lcl ]; then
   . ~/.profile.lcl
