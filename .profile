@@ -65,7 +65,7 @@ fi
 scr () {
   if [ "$#" == "0" ]; then screen -ls; return ; fi
   screen -ls | grep "\.$1\s.*(Detached)" && screen -r "$1" && return
-  screen -ls | grep "\.$1\s" && echo "screen $1 is already attached somewhere, aborting." && return
+  screen -ls | grep "\.$1\s" && echo "screen $1 is already attached somewhere, aborting. Use 'screen -d -r $1' to force reconnect." && return
   screen -S "$1" && return
 }
 
