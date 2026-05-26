@@ -71,8 +71,8 @@ scr () {
 
 tm () {
   if [ "$#" == "0" ]; then tmux ls; return ; fi
-  tmux ls | grep -P "^$1:.*(attached)" && echo "tmux $1 is already attached somewhere, aborting." && return
-  tmux ls | grep -P "^$1:" && tmux attach -t "$1" && return
+  tmux ls | grep "^$1:.*(attached)" && echo "tmux $1 is already attached somewhere, aborting." && return
+  tmux ls | grep "^$1:" && tmux attach -t "$1" && return
   tmux new -s "$1" && return
 }
 
